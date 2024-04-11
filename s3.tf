@@ -37,7 +37,7 @@ resource "aws_s3_bucket_object" "data_object" {
   source = "resources/customer-master.xlsx"
   tags = merge({
     Name        = "ipalvr20240411-customer-master"
-    Environment = local.resource_prefix.value
+    #Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/s3.tf"
@@ -55,7 +55,7 @@ resource "aws_s3_bucket" "financials" {
   # bucket does not have access logs
   # bucket does not have versioning
   bucket        = "ipalvr20240411-financials"
-  acl           = "private"
+  #acl           = "private"
   force_destroy = true
   tags = merge({
     Name        = "ipalvr20240411-financials"
@@ -139,7 +139,7 @@ resource "aws_s3_bucket" "logs" {
   force_destroy = true
   tags = merge({
     Name        = "ipalvr20240411-logs"
-    Environment = local.resource_prefix.value
+    #Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/s3.tf"
@@ -151,4 +151,3 @@ resource "aws_s3_bucket" "logs" {
     yor_trace            = "01946fe9-aae2-4c99-a975-e9b0d3a4696c"
   })
 }
-
