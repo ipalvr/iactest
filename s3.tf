@@ -1,13 +1,12 @@
-#This is a test!
 resource "aws_s3_bucket" "data" {
   # bucket is public
   # bucket is not encrypted
   # bucket does not have access logs
   # bucket does not have versioning
-  bucket        = "${local.resource_prefix.value}-data"
+  bucket        = "ipalvr20240411-data"
   force_destroy = true
   tags = merge({
-    Name        = "${local.resource_prefix.value}-data"
+    Name        = "ipalvr20240411-data"
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -37,7 +36,7 @@ resource "aws_s3_bucket_object" "data_object" {
   key    = "customer-master.xlsx"
   source = "resources/customer-master.xlsx"
   tags = merge({
-    Name        = "${local.resource_prefix.value}-customer-master"
+    Name        = "ipalvr20240411-customer-master"
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -55,11 +54,11 @@ resource "aws_s3_bucket" "financials" {
   # bucket is not encrypted
   # bucket does not have access logs
   # bucket does not have versioning
-  bucket        = "${local.resource_prefix.value}-financials"
+  bucket        = "ipalvr20240411-financials"
   acl           = "private"
   force_destroy = true
   tags = merge({
-    Name        = "${local.resource_prefix.value}-financials"
+    Name        = "ipalvr20240411-financials"
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -77,14 +76,14 @@ resource "aws_s3_bucket" "financials" {
 resource "aws_s3_bucket" "operations" {
   # bucket is not encrypted
   # bucket does not have access logs
-  bucket = "${local.resource_prefix.value}-operations"
+  bucket = "ipalvr20240411-operations"
   acl    = "private"
   versioning {
     enabled = true
   }
   force_destroy = true
   tags = merge({
-    Name        = "${local.resource_prefix.value}-operations"
+    Name        = "ipalvr20240411-operations"
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
@@ -101,7 +100,7 @@ resource "aws_s3_bucket" "operations" {
 
 resource "aws_s3_bucket" "data_science" {
   # bucket is not encrypted
-  bucket = "${local.resource_prefix.value}-data-science"
+  bucket = "ipalvr20240411-data-science"
   acl    = "private"
   versioning {
     enabled = true
@@ -124,7 +123,7 @@ resource "aws_s3_bucket" "data_science" {
 }
 
 resource "aws_s3_bucket" "logs" {
-  bucket = "${local.resource_prefix.value}-logs"
+  bucket = "ipalvr20240411-logs"
   acl    = "log-delivery-write"
   versioning {
     enabled = true
@@ -139,7 +138,7 @@ resource "aws_s3_bucket" "logs" {
   }
   force_destroy = true
   tags = merge({
-    Name        = "${local.resource_prefix.value}-logs"
+    Name        = "ipalvr20240411-logs"
     Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
