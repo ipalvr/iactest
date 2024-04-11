@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "data" {
   force_destroy = true
   tags = merge({
     Name        = "ipalvr20240411-data"
-    Environment = local.resource_prefix.value
+    #Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/s3.tf"
@@ -59,7 +59,7 @@ resource "aws_s3_bucket" "financials" {
   force_destroy = true
   tags = merge({
     Name        = "ipalvr20240411-financials"
-    Environment = local.resource_prefix.value
+    #Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/s3.tf"
@@ -84,7 +84,7 @@ resource "aws_s3_bucket" "operations" {
   force_destroy = true
   tags = merge({
     Name        = "ipalvr20240411-operations"
-    Environment = local.resource_prefix.value
+    #Environment = local.resource_prefix.value
     }, {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/aws/s3.tf"
@@ -132,7 +132,7 @@ resource "aws_s3_bucket" "logs" {
     rule {
       apply_server_side_encryption_by_default {
         sse_algorithm     = "aws:kms"
-        kms_master_key_id = "${aws_kms_key.logs_key.arn}"
+        kms_master_key_id = "xyzkey"
       }
     }
   }
@@ -151,3 +151,4 @@ resource "aws_s3_bucket" "logs" {
     yor_trace            = "01946fe9-aae2-4c99-a975-e9b0d3a4696c"
   })
 }
+
